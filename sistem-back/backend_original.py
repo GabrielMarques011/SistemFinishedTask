@@ -101,18 +101,18 @@ def fecha_os(os_item):
 
 if __name__ == "__main__":
     if not host or not token:
-        print("Configura as variáveis no .env")
+        # print("Configura as variáveis no .env")
         exit(1)
     
-    print(f"Buscando chamados FIRST PAY (assunto {assunto_id})...")
+    # print(f"Buscando chamados FIRST PAY (assunto {assunto_id})...")
     
     lista_os = busca_os()
     
     if not lista_os:
-        print("Nada encontrado")
+        # print("Nada encontrado")
         exit(0)
     
-    print(f"Encontrados: {len(lista_os)} chamados")
+    # print(f"Encontrados: {len(lista_os)} chamados")
     
     finalizados = []
     
@@ -121,13 +121,15 @@ if __name__ == "__main__":
             finalizados.append(os_item.get("id"))
         
         if i % 50 == 0:
-            print(f"Processando... {i}/{len(lista_os)}")
+            # print(f"Processando... {i}/{len(lista_os)}")
+            pass
         
         time.sleep(0.1)
     
-    print(f"\nIDs dos chamados finalizados ({len(finalizados)}/{len(lista_os)}):")
-    print("-" * 30)
+    # print(f"\nIDs dos chamados finalizados ({len(finalizados)}/{len(lista_os)}):")
+    # print("-" * 30)
     
     # Mostra 10 por linha
     for i in range(0, len(finalizados), 10):
-        print(" ".join(map(str, finalizados[i:i+10])))
+        # print(" ".join(map(str, finalizados[i:i+10])))
+        pass

@@ -155,21 +155,21 @@ def executar_logica(assunto_id, status_ok, data_limite, id_diagnostico, id_taref
             return resposta.status_code == 200
             
         except Exception as e:
-            print(f"Erro ao fechar OS {os_item.get('id')}: {e}")
+            # print(f"Erro ao fechar OS {os_item.get('id')}: {e}")
             return False
     
     if not host or not token:
         raise Exception("Configura as variáveis no .env")
     
-    print(f"Buscando chamados (assunto {assunto_id})...")
-    print(f"IDs configurados: Diagnóstico = {id_diagnostico}, Tarefa = {id_tarefa if id_tarefa else 'Nenhum (opcional)'}")
+    # print(f"Buscando chamados (assunto {assunto_id})...")
+    # print(f"IDs configurados: Diagnóstico = {id_diagnostico}, Tarefa = {id_tarefa if id_tarefa else 'Nenhum (opcional)'}")
     
     lista_os = busca_os()
     
     if not lista_os:
         return {"total": 0, "finalizados": 0, "ids_finalizados": []}
     
-    print(f"Encontrados: {len(lista_os)} chamados")
+    # print(f"Encontrados: {len(lista_os)} chamados")
     
     finalizados = []
     
@@ -178,7 +178,8 @@ def executar_logica(assunto_id, status_ok, data_limite, id_diagnostico, id_taref
             finalizados.append(os_item.get("id"))
         
         if i % 50 == 0:
-            print(f"Processando... {i}/{len(lista_os)}")
+            # print(f"Processando... {i}/{len(lista_os)}")
+            pass
         
         time.sleep(0.1)
     

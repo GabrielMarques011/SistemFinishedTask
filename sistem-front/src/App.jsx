@@ -24,7 +24,7 @@ const OSManager = () => {
 
   useEffect(() => {
     initializeDefaults();
-    addLog('Sistema inicializado e pronto para uso.');
+    // addLog('Sistema inicializado e pronto para uso.');
   }, []);
 
   useEffect(() => {
@@ -90,9 +90,9 @@ const OSManager = () => {
     };
 
     setIsProcessing(true);
-    addLog('Iniciando processamento...');
-    addLog(`Parâmetros: Assunto ID = ${assuntoId}, Status = [${selectedStatuses.join(', ')}], Data Limite = ${dataLimite}`);
-    addLog(`IDs: Diagnóstico = ${idDiagnostico}, Tarefa = ${idTarefa || 'Nenhum (opcional)'}`);
+    /* addLog('Iniciando processamento...');
+    // addLog(`Parâmetros: Assunto ID = ${assuntoId}, Status = [${selectedStatuses.join(', ')}], Data Limite = ${dataLimite}`);
+    // addLog(`IDs: Diagnóstico = ${idDiagnostico}, Tarefa = ${idTarefa || 'Nenhum (opcional)'}`); */
 
     try {
       const response = await fetch('http://10.0.30.251:3535/executar', {
@@ -104,15 +104,15 @@ const OSManager = () => {
       const resultado = await response.json();
 
       if (resultado.sucesso) {
-        addLog('Processamento concluído com sucesso!', 'success');
+        /* addLog('Processamento concluído com sucesso!', 'success'); */
         setResults(resultado);
         setShowResults(true);
       } else {
-        addLog(`Erro: ${resultado.mensagem}`, 'error');
+        // addLog(`Erro: ${resultado.mensagem}`, 'error');
         alert(`Erro: ${resultado.mensagem}`);
       }
     } catch (error) {
-      addLog(`Erro na requisição: ${error.message}`, 'error');
+      // addLog(`Erro na requisição: ${error.message}`, 'error');
       alert('Erro ao conectar com o servidor. Verifique se o backend está rodando.');
     } finally {
       setIsProcessing(false);
@@ -127,7 +127,7 @@ const OSManager = () => {
     setIdTarefa('');
     setShowResults(false);
     setResults(null);
-    addLog('Campos resetados para valores padrão.');
+    // addLog('Campos resetados para valores padrão.');
   };
 
   const getLogIcon = (tipo) => {
